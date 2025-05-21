@@ -1,0 +1,36 @@
+
+
+.note-list h1 {
+    text-align: center;
+    color: darkcyan;
+}
+
+
+.note-list .note {
+    border:1px solid #6e6b6b;
+    border-radius: 4px;
+    width: 250px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    background-color: white;
+    padding: 5px;  
+    vertical-align: top;  
+    height: 250px;
+}
+
+.note-list .note h3  {
+    text-align: center;
+    color: #333;
+}
+
+.note-list .note label {
+    color: #979b9d;
+    font-size: 12px;
+}
+
+.note-list .note img {
+    width: 100%;
+    /* height: 150px; */
+}

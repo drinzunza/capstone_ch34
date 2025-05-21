@@ -21,3 +21,40 @@ django-admin startproject config .
 
 # create an app inside django
 python3 manage.py startapp pages
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# create the app
+
+# we install it (setting.py installed_apps)
+
+# we create urls.py in the app
+
+# register the app urls in config > urls.py
+
+
+# create the model
+
+# register the model on admin.py
+
+# make migrations and migrate
+
+# add data using django admin
+
+# create the list view
+  - views
+  - template
+  - url
+
+# style it

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}All your notes{% endblock %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/notes.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="note-list">
+
+    <h1>These are all your notes</h1>
+
+    <div class="list">
+        {% for note in note_list %}
+            <div class="note">
+
+                {% if note.image %}
+                <img src="{{ note.image.url }}">
+                {% endif %}
+
+                <h3>{{ note.title }}</h3>
+                <label>{{ note.created_on }}</label>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
+
