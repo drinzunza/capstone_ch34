@@ -29,6 +29,13 @@ python3 manage.py startapp pages
 
 
 
+# GIT
+git add -A
+git commit -m "ANY MESSAGE" 
+git push 
+
+
+
 
 
 
