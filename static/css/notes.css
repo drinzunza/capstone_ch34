@@ -18,7 +18,7 @@
     background-color: white;
     padding: 5px;  
     vertical-align: top;  
-    height: 250px;
+    height: 280px;
 }
 
 .note-list .note h3  {
@@ -44,12 +44,47 @@
 
 
 
+.note-details {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.note-details .main-img {
+    max-width: 100%;
+}
+
+.note-details h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: darkcyan;
+}
+
+.note-details .date {
+    font-size: 12px;
+    color: #999b9b;
+}
 
 
+.note-details p {
+    white-space: pre-wrap;
+}
 
+.note-delete {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10rem;
+    text-align: center;
+}
 
+.note-delete button {
+    margin-left: 10px;
+}
 
-
+.note-delete form {
+    margin-top:20px;
+}
 
 @media(max-width:767px) {
     /* CSS for MOBILE */

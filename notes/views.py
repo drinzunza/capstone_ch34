@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import Note
 from .forms import NoteForm
 from django.urls import reverse_lazy
@@ -26,4 +26,37 @@ class NoteCreate(CreateView):
     model = Note
     form_class = NoteForm
     template_name = "notes/create.html"
+    success_url = reverse_lazy('note_list')
+
+    def get_context_data(self, **kwargs):
+        # allow us to extend/modify the context pass to the template
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Create Note"
+        return context
+
+
+
+class NoteDetail(DetailView):
+    model = Note
+    template_name = "notes/details.html"
+
+
+
+class NoteUpdate(UpdateView):
+    model = Note
+    form_class = NoteForm
+    template_name = "notes/create.html"
+    success_url = reverse_lazy('note_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Update Note"
+        return context
+    
+
+
+
+class NoteDelete(DeleteView):
+    model = Note
+    template_name = "notes/delete.html"
     success_url = reverse_lazy('note_list')

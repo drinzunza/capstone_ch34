@@ -25,6 +25,10 @@
 
                 <h3>{{ note.title }}</h3>
                 <label>{{ note.created_on }}</label>
+
+                <div class="controls">
+                    <a class="btn btn-sm btn-outline-primary" href="{% url 'note_details' note.id %}">View details</a>
+                </div>
             </div>
         {% endfor %}
     </div>
