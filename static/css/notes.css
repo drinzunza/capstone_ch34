@@ -70,6 +70,34 @@
     white-space: pre-wrap;
 }
 
+
+.note-details .comment {
+    padding: 10px;
+    background-color: #f9f6f6;
+    border:1px solid #dfdbdb;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+.note-details .comment p {
+    margin:3px 0;
+}
+
+.note-details .comment .author {
+    font-weight: 600;
+    color: rgb(87, 135, 135);
+}
+
+.note-details .comment .date {
+    font-size: 12px;
+    color:#434445;
+}
+
+
+
+
+
+
 .note-delete {
     max-width: 800px;
     margin-left: auto;

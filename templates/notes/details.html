@@ -19,10 +19,36 @@
     <p>{{ note.content }}</p>
 
     <label class="date">{{ note.created_on }}</label>
-
+    
     <div class="controls">
         <a class="btn btn-sm btn-outline-primary" href="{% url 'note_update' note.id %}">Edit Note</a>
         <a class="btn btn-sm btn-outline-danger" href="{% url 'note_delete' note.id %}">Delete Note</a>
+    </div>
+
+    <hr>
+    <h4>Comments</h4>
+
+    <div class="comments">
+        {% for cmt in comments %}
+            <div class="comment">
+                <label class="author">{{cmt.author.username}}</label>
+                <p>{{cmt.content}}</p>
+                <label class="date">{{cmt.created_on}}</label>
+            </div>
+        {% endfor %}
+
+        <!-- form to create new comments -->
+         {% if user.is_authenticated %}
+         <div class="comment">
+            <form method="post" action="{% url 'save_comment' %}">
+                {% csrf_token %}
+                <label class="author">Create new comment</label>
+                <input type="hidden" value="{{note.id}}" name="note_id">
+                <textarea required name="content" rows="3" class="form-control"></textarea>
+                <button class="btn btn-sm btn-outline-dark">Post comment</button>
+            </form>
+         </div>
+         {% endif %}
     </div>
 
 </div>

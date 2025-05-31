@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from .models import Note
+from .models import Note, NoteComment
 from .forms import NoteForm
 from django.urls import reverse_lazy
 
@@ -40,6 +40,14 @@ class NoteDetail(DetailView):
     model = Note
     template_name = "notes/details.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # load all comment for this note
+        note = self.object
+        comments = NoteComment.objects.filter(note=note).prefetch_related("author")
+        context["comments"] = comments
+        return context
+
 
 
 class NoteUpdate(UpdateView):
@@ -60,3 +68,24 @@ class NoteDelete(DeleteView):
     model = Note
     template_name = "notes/delete.html"
     success_url = reverse_lazy('note_list')
+
+
+
+def save_comment(request):
+    note_id = request.POST.get('note_id')
+    text = request.POST.get('content')
+    user = request.user #logged in user
+
+    # read the note record from the DB
+    note = Note.objects.get(id=note_id)
+
+    # create the comment record
+    comment = NoteComment.objects.create(
+        note = note,
+        content = text,
+        author = user
+    )
+
+    comment.save()
+
+    return redirect('note_details', pk=note_id)
